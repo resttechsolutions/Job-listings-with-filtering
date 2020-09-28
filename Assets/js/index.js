@@ -13,8 +13,8 @@ $(() => {
 
                 <div style="margin-top: 26px;">
                     <label class="text-muted  company">${item.company}</label>
-                    <label class="rounded-pill text-wrap text-white lbl-new">${item.new && `<span>NEW!</span>`}</label>
-                    <label class="rounded-pill lbl-featured text-white">FEATURED</label>
+                    ${item.new ? '<label class="rounded-pill text-white lbl-new">NEW!</label>':''}
+                    ${item.featured ?  '<label class="rounded-pill text-white lbl-featured">FEATURED</label>' : ''}
                     <p class="font-weight-bold title mb-0">${item.position}</p>
                     <label class="text-muted company">
                         ${item.postedAt} <span class="mx-2">.</span> 
@@ -36,27 +36,19 @@ $(() => {
                     ${
                         item.languages.map( lang => {
                             return `<button type="button" class="mx-1 btn btn-xs text-muted">
-                                 ${lang} x
+                                 ${lang} 
                             </button>`
                         }).join('')
                     }
                     
                     
                 </div>
-
-            </div>`
-            ;
+                
+            </div> `
             
-            if (item.featured) {
-                $('#tab').attr('style', 'bd-callout');
-            }
         }
 
         $('#main').append(tab);
-
-        // for (const item of items) {
-            $('#img').attr('src', `Assets/${items[0].logo}`) ;
-            // console.log(item.logo)
-        // }
+        
     });
 });
