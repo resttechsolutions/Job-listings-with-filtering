@@ -1,0 +1,44 @@
+#bgImg{
+    background-color: hsl(180, 29%, 50%);
+}
+
+body{
+    background-color: hsl(180, 52%, 96%);
+    font-family: 'Spartan', sans-serif;
+}
+
+
+.bd-callout{
+    border: 1px solid hsl(180, 8%, 52%);
+    border-left-width: .25rem;
+    border-radius: .25rem;
+}
+
+.company{
+    font-size: 9px;
+}
+
+.title{
+    font-size: 12px;
+}
+
+#filters button{
+    font-size: 9px;
+    background-color: hsl(180, 31%, 95%);
+    padding: 5px 8px 3px 8px;
+
+    /* border-radius: .25erem; */
+}
+
+.lbl-new{
+    background-color: hsl(180, 8%, 52%);
+    font-size: 8px;
+    padding: 5px 8px 3px 8px;
+    margin-left: 4px;
+}
+
+.lbl-featured{
+    background-color:hsl(180, 14%, 20%);
+    font-size: 8px;
+    padding: 5px 8px 3px 8px;
+}
