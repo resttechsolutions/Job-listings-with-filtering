@@ -35,7 +35,7 @@ $(() => {
 
                     ${
                         item.languages.map( lang => {
-                            return `<button type="button" class="mx-1 btn btn-xs text-muted">
+                            return `<button id="languages" onclick="addFiltersLanguages(${this})" type="button" class="mx-1 btn btn-xs text-muted">
                                  ${lang} 
                             </button>`
                         }).join('')
@@ -52,3 +52,11 @@ $(() => {
         
     });
 });
+
+function addFiltersLanguages(button) {
+    debugger
+    $('#filterLang').addClass('d-block').append(button);
+
+
+
+}
