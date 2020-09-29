@@ -25,17 +25,21 @@ $(() => {
 
                 <div class="d-inline my-auto ml-auto mr-5" id="filters">
                     
-                    <button type="button" class="mx-1 btn btn-xs text-muted">
+                    <button data-value="filters" type="button" class="mx-1 btn btn-xs text-muted">
                         ${item.role}
                     </button>
-                    <button type="button" class="mx-1 btn btn-xs text-muted">
+                    <button data-value="filters" type="button" class="mx-1 btn btn-xs text-muted">
                         ${item.level}
                     </button>
                     
 
                     ${
                         item.languages.map( lang => {
-                            return `<button id="languages" onclick="addFiltersLanguages(${this})" type="button" class="mx-1 btn btn-xs text-muted">
+                            return `<button 
+                            id="btn-languages" 
+                            data-value="filters"  
+                            type="button" 
+                            class="mx-1 btn btn-xs text-muted">
                                  ${lang} 
                             </button>`
                         }).join('')
@@ -47,16 +51,29 @@ $(() => {
             </div> `
             
         }
-
-        $('#main').append(tab);
         
+
+        // $('.btn').hover(() => {
+        //     // over
+        //     $('selector').addClass('btn-hover');
+        // }, () => {
+        //     // out
+        //     $('selector').removeClass('btn-hover');
+        // });
+        
+        $('#main').append(tab);
+
+        
+        const allTags =document.getElementsByClassName('.btn');
+
+        Array.from(allTags).forEach(button => {
+            button.addEventListener('click', onTagClicked());
+        });
     });
 });
 
-function addFiltersLanguages(button) {
-    debugger
-    $('#filterLang').addClass('d-block').append(button);
 
-
-
+function onTagClicked(e){
+    e.preventDefault();
+    $('#filterLang').classRemove('d-none').addClass('d-block');
 }
