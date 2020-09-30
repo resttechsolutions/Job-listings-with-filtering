@@ -1,45 +1,48 @@
-$(() => {
-    fetch('Assets/json/data.json')
-    .then(res => res.json())
-    .then(items => {
+$(async () => {
 
-        let tab = '';
+    try {
+        const responseJson = await fetch('Assets/json/data.json');
+        const jobs = await responseJson.json();
+        
+        let row = '';
 
-        for (const item of items) {
-            tab += `<div id="tab" class="row my-3 shadow rounded-lg">
-                <div class="mr-3">
-                    <img " class="ml-4 my-4" src="${'Assets/' + item.logo}">
-                </div>
+        jobs.forEach(job => {
+            console.log(job.id);
 
-                <div style="margin-top: 26px;">
-                    <label class="text-muted  company">${item.company}</label>
-                    ${item.new ? '<label class="rounded-pill text-white lbl-new">NEW!</label>':''}
-                    ${item.featured ?  '<label class="rounded-pill text-white lbl-featured">FEATURED</label>' : ''}
-                    <p class="font-weight-bold title mb-0">${item.position}</p>
+            row += `<div id="tab" class="row my-3 shadow rounded-lg">
+            <div class="mr-3">
+                <img " class="ml-4 my-4" src="${'Assets/' + job.logo}">
+            </div>
+            
+            <div style="margin-top: 26px;">
+                    <label class="text-muted  company">${job.company}</label>
+                    ${job.new ? '<label class="rounded-pill text-white lbl-new">NEW!</label>':''}
+                    ${job.featured ?  '<label class="rounded-pill text-white lbl-featured">FEATURED</label>' : ''}
+                    <p class="font-weight-bold title mb-0">${job.position}</p>
                     <label class="text-muted company">
-                        ${item.postedAt} <span class="mx-2">.</span> 
-                        ${item.contract} <span class="mx-2">.</span>
-                        ${item.location}
+                        ${job.postedAt} <span class="mx-2">.</span> 
+                        ${job.contract} <span class="mx-2">.</span>
+                        ${job.location}
                     </label>
-                </div>
-
-                <div class="d-inline my-auto ml-auto mr-5" id="filters">
+            </div>
+            
+            <div class="d-inline my-auto ml-auto mr-5" id="filters">
                     
-                    <button data-value="filters" type="button" class="mx-1 btn btn-xs text-muted">
-                        ${item.role}
+                    <button data-role="${job.role}" type="button" class="mx-1 btn btn-xs text-muted test">
+                        ${job.role}
                     </button>
-                    <button data-value="filters" type="button" class="mx-1 btn btn-xs text-muted">
-                        ${item.level}
+                    <button data-level="${job.level}" type="button" class="mx-1 btn btn-xs text-muted test">
+                        ${job.level}
                     </button>
                     
 
                     ${
-                        item.languages.map( lang => {
+                        job.languages.map( lang => {
                             return `<button 
                             id="btn-languages" 
-                            data-value="filters"  
+                            data-lang="${lang}"  
                             type="button" 
-                            class="mx-1 btn btn-xs text-muted">
+                            class="mx-1 btn btn-xs text-muted test">
                                  ${lang} 
                             </button>`
                         }).join('')
@@ -48,32 +51,33 @@ $(() => {
                     
                 </div>
                 
-            </div> `
-            
-        }
-        
+            </div>`;
+        });
+
+        $('#main').append(row);
 
         // $('.btn').hover(() => {
         //     // over
-        //     $('selector').addClass('btn-hover');
+        //     $('.test').att('btn-hover');
         // }, () => {
         //     // out
-        //     $('selector').removeClass('btn-hover');
+        //     $('.test').removeClass('btn-hover');
         // });
-        
-        $('#main').append(tab);
 
-        
-        const allTags =document.getElementsByClassName('.btn');
+        $('.test').click((e) =>{ 
+            e.preventDefault();
 
-        Array.from(allTags).forEach(button => {
-            button.addEventListener('click', onTagClicked());
+            $('#filterLang').removeClass('d-none').addClass('d-block');
+
+            let dataArray = e.click;
+
+            console.log(dataArray)
+
+            // $('#filterLang').append(dataArray);
         });
-    });
+
+    } catch (error) {
+        console.log(error)
+    }
+    
 });
-
-
-function onTagClicked(e){
-    e.preventDefault();
-    $('#filterLang').classRemove('d-none').addClass('d-block');
-}
