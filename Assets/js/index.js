@@ -7,17 +7,18 @@ $(async () => {
         let row = '';
 
         jobs.forEach(job => {
-            console.log(job.id);
 
-            row += `<div id="tab" class="row my-3 shadow rounded-lg">
+            row += `<div id="tab" class="${job.featured ? 'bd-callout' : ''} row my-3 shadow rounded-lg">
             <div class="mr-3">
                 <img " class="ml-4 my-4" src="${'Assets/' + job.logo}">
             </div>
+
+            
             
             <div style="margin-top: 26px;">
                     <label class="text-muted  company">${job.company}</label>
-                    ${job.new ? '<label class="rounded-pill text-white lbl-new">NEW!</label>':''}
-                    ${job.featured ?  '<label class="rounded-pill text-white lbl-featured">FEATURED</label>' : ''}
+                    ${job.new ? `<label class="rounded-pill text-white lbl-new">NEW!</label>`:``}
+                    ${job.featured ? `<label class="rounded-pill text-white lbl-featured">FEATURED</label>` : ``}
                     <p class="font-weight-bold title mb-0">${job.position}</p>
                     <label class="text-muted company">
                         ${job.postedAt} <span class="mx-2">.</span> 
@@ -28,26 +29,24 @@ $(async () => {
             
             <div class="d-inline my-auto ml-auto mr-5" id="filters">
                     
-                    <button data-role="${job.role}" type="button" class="mx-1 btn btn-xs text-muted test">
+                    <button id="btn-role" data-value="${job.role}" type="button" class="mx-1 btn btn-xs text-muted test">
                         ${job.role}
                     </button>
-                    <button data-level="${job.level}" type="button" class="mx-1 btn btn-xs text-muted test">
+                    <button id="btn-level" data-value="${job.level}" type="button" class="mx-1 btn btn-xs text-muted test">
                         ${job.level}
                     </button>
-                    
 
                     ${
                         job.languages.map( lang => {
                             return `<button 
                             id="btn-languages" 
-                            data-lang="${lang}"  
+                            data-value="${lang}"  
                             type="button" 
                             class="mx-1 btn btn-xs text-muted test">
                                  ${lang} 
                             </button>`
                         }).join('')
                     }
-                    
                     
                 </div>
                 
@@ -56,26 +55,65 @@ $(async () => {
 
         $('#main').append(row);
 
-        // $('.btn').hover(() => {
-        //     // over
-        //     $('.test').att('btn-hover');
-        // }, () => {
-        //     // out
-        //     $('.test').removeClass('btn-hover');
-        // });
+        $('.btn').hover((e) => {
+            // over
+            $(e.target).addClass('bg-hover');
+        }, (e) => {
+            // out
+            $(e.target).removeClass('bg-hover');
+        });
 
         $('.test').click((e) =>{ 
             e.preventDefault();
 
-            $('#filterLang').removeClass('d-none').addClass('d-block');
+            const filter = new Set();
 
-            let dataArray = e.click;
+            switch (e.target.dataset.value) {
+                case `Frontend`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `Backend`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `Fullstack`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `Senior`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `Midweight`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `Junior`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `HTML`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `CSS`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `JavaScript`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `Ruby`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                    break;
+                case `Python`:
+                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+                break;
+                default:
+                    break;
+            }
+            $('#filterLang').removeClass('d-none').addClass('d-flex d-block');
+            
+            filter.forEach(tag => {
+                $('#btn-tags').append(tag);
+            })
 
-            console.log(dataArray)
-
-            // $('#filterLang').append(dataArray);
         });
-
+        
+        
     } catch (error) {
         console.log(error)
     }

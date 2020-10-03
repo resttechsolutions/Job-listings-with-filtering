@@ -9,7 +9,7 @@ body{
 
 
 .bd-callout{
-    border: 1px solid hsl(180, 8%, 52%);
+    border-left: 1px solid hsl(180, 8%, 52%);
     border-left-width: .25rem;
     border-radius: .25rem;
 }
@@ -47,6 +47,7 @@ body{
     padding: 5px 8px 3px 8px;
 }
 
-.btn-hover{
-    background-color:hsl(180, 14%, 20%);
+.bg-hover{
+    background-color:hsl(180, 8%, 52%)!important;
+    color : white !important;
 }
