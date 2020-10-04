@@ -47,7 +47,12 @@ body{
     padding: 5px 8px 3px 8px;
 }
 
-.bg-hover{
+/* .bg-hover{
+    background-color:hsl(180, 8%, 52%)!important;
+    color : white !important;
+} */
+
+#btn-role:hover, #btn-level:hover, #btn-languages:hover{
     background-color:hsl(180, 8%, 52%)!important;
     color : white !important;
 }

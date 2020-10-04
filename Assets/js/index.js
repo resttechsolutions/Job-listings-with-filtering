@@ -29,10 +29,17 @@ $(async () => {
             
             <div class="d-inline my-auto ml-auto mr-5" id="filters">
                     
-                    <button id="btn-role" data-value="${job.role}" type="button" class="mx-1 btn btn-xs text-muted test">
+                    <button id="btn-role" 
+                    data-value="${job.role}" 
+                    type="button" 
+                    class="mx-1 btn btn-xs text-muted test">
                         ${job.role}
                     </button>
-                    <button id="btn-level" data-value="${job.level}" type="button" class="mx-1 btn btn-xs text-muted test">
+                    
+                    <button id="btn-level" 
+                    data-value="${job.level}" 
+                    type="button" 
+                    class="mx-1 btn btn-xs text-muted test">
                         ${job.level}
                     </button>
 
@@ -55,13 +62,13 @@ $(async () => {
 
         $('#main').append(row);
 
-        $('.btn').hover((e) => {
-            // over
-            $(e.target).addClass('bg-hover');
-        }, (e) => {
-            // out
-            $(e.target).removeClass('bg-hover');
-        });
+        // $('.btn').hover((e) => {
+        //     // over
+        //     $(e.target).addClass('bg-hover');
+        // }, (e) => {
+        //     // out
+        //     $(e.target).removeClass('bg-hover');
+        // });
 
         $('.test').click((e) =>{ 
             e.preventDefault();
@@ -118,4 +125,11 @@ $(async () => {
         console.log(error)
     }
     
+
+});
+
+$('#btn-clear').click((e) => { 
+    e.preventDefault();
+    
+    $('#btn-tags').html('');
 });
