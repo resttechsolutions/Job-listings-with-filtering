@@ -32,14 +32,16 @@ $(async () => {
                     <button id="btn-role" 
                     data-value="${job.role}" 
                     type="button" 
-                    class="mx-1 btn btn-xs text-muted test">
+                    class="mx-1 btn btn-xs text-muted test"
+                    onclick="addingToArray(${job.role})">
                         ${job.role}
                     </button>
-                    
+
                     <button id="btn-level" 
                     data-value="${job.level}" 
                     type="button" 
-                    class="mx-1 btn btn-xs text-muted test">
+                    class="mx-1 btn btn-xs text-muted test"
+                    onclick="addingToArray(${job.level})">
                         ${job.level}
                     </button>
 
@@ -49,7 +51,8 @@ $(async () => {
                             id="btn-languages" 
                             data-value="${lang}"  
                             type="button" 
-                            class="mx-1 btn btn-xs text-muted test">
+                            class="mx-1 btn btn-xs text-muted test"
+                            onclick="addingToArray(${lang})">
                                  ${lang} 
                             </button>`
                         }).join('')
@@ -70,55 +73,55 @@ $(async () => {
         //     $(e.target).removeClass('bg-hover');
         // });
 
-        $('.test').click((e) =>{ 
-            e.preventDefault();
+        // $('.test').click((e) =>{ 
+        //     e.preventDefault();
 
-            const filter = new Set();
+        //     const filter = new Set();
 
-            switch (e.target.dataset.value) {
-                case `Frontend`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `Backend`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `Fullstack`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `Senior`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `Midweight`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `Junior`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `HTML`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `CSS`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `JavaScript`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `Ruby`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                    break;
-                case `Python`:
-                    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
-                break;
-                default:
-                    break;
-            }
-            $('#filterLang').removeClass('d-none').addClass('d-flex d-block');
+        //     switch (e.target.dataset.value) {
+        //         case `Frontend`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `Backend`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `Fullstack`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `Senior`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `Midweight`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `Junior`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `HTML`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `CSS`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `JavaScript`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `Ruby`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //             break;
+        //         case `Python`:
+        //             filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${e.target.dataset.value}</button>`);
+        //         break;
+        //         default:
+        //             break;
+        //     }
+            // $('#filterLang').removeClass('d-none').addClass('d-flex d-block');
             
-            filter.forEach(tag => {
-                $('#btn-tags').append(tag);
-            })
+            // filter.forEach(tag => {
+            //     $('#btn-tags').append(tag);
+            // })
 
-        });
+        // });
         
         
     } catch (error) {
@@ -133,3 +136,15 @@ $('#btn-clear').click((e) => {
     
     $('#btn-tags').html('');
 });
+
+function addingToArray(tagAdded){
+    e.preventDefault();
+    debugger;
+    const filter = new Set();
+
+    filter.add(`<button class="tag clear mx-1 btn btn-xs text-muted mr-auto">${tagAdded}</button>`);
+
+    $('#filterLang').removeClass('d-none').addClass('d-flex d-block');
+
+    $('#btn-tags').append(filter);
+}
