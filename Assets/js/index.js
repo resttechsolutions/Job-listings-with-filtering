@@ -113,6 +113,7 @@ function deletingFilter(tagToDelete){
 
     if (filter.size == 0) {
         clearBar();
+        
     }
     
 }
