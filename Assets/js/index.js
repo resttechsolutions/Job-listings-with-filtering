@@ -1,4 +1,5 @@
 let filter = new Set();
+let allJobs = new Set();
 $(async () => {
 
     try {
@@ -62,6 +63,8 @@ $(async () => {
                 </div>
                 
             </div>`;
+
+            allJobs.add(row);
         });
 
         $('#main').append(row);
@@ -107,6 +110,10 @@ function deletingFilter(tagToDelete){
     filter.forEach(f => {
         $('#btn-tags').append(`<button onclick="deletingFilter('${f}')" class="tag clear mx-1 btn btn-xs text-muted mr-auto">${f}</button>`);
     });
+
+    if (filter.size == 0) {
+        clearBar();
+    }
     
 }
 
