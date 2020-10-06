@@ -87,31 +87,29 @@ function addingToArray(tagAdded){
     $('#btn-tags').html('');
 
     if(!filter.has(tagAdded)){
-        filter.add(`<button onclick="deletingFilter('${this}')" class="tag clear mx-1 btn btn-xs text-muted mr-auto">${tagAdded}</button>`);
-
+        
+        filter.add(tagAdded);
+        
         $('#filterLang').removeClass('d-none').addClass('d-flex d-block');
 
         for(let f of filter){
-            $('#btn-tags').append(f);
+            $('#btn-tags').append(`<button onclick="deletingFilter('${f}')" class="tag clear mx-1 btn btn-xs text-muted mr-auto">${f}</button>`);
         }
     }
 }
 
-// function showSet(){
-//     $('#btn-tags').html('');
-
-//     for(let f of filter){
-//         $('#btn-tags').append(f);
-//     }
-// }
-
 function deletingFilter(tagToDelete){
-    console.log(tagToDelete)
+
     filter.delete(tagToDelete);
 
-    // showSet();
+    $('#btn-tags').html('');
+
+    filter.forEach(f => {
+        $('#btn-tags').append(`<button onclick="deletingFilter('${f}')" class="tag clear mx-1 btn btn-xs text-muted mr-auto">${f}</button>`);
+    });
     
-    // for(let f of filter){
-    //     $('#btn-tags').append(f);
-    // }
+}
+
+function filteringJobs(){
+
 }
