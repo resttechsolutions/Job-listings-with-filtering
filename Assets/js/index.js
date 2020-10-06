@@ -94,10 +94,11 @@ function addingToArray(tagAdded){
         filter.add(tagAdded);
         
         $('#filterLang').removeClass('d-none').addClass('d-flex d-block');
+        
+    }
 
-        for(let f of filter){
-            $('#btn-tags').append(`<button onclick="deletingFilter('${f}')" class="tag clear mx-1 btn btn-xs text-muted mr-auto">${f}</button>`);
-        }
+    for(let f of filter){
+        $('#btn-tags').append(`<button onclick="deletingFilter('${f}')" class="tag clear mx-1 btn btn-xs text-muted mr-auto">${f}</button>`);
     }
 }
 
@@ -113,7 +114,7 @@ function deletingFilter(tagToDelete){
 
     if (filter.size == 0) {
         clearBar();
-        
+
     }
     
 }
