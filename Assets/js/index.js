@@ -5,17 +5,15 @@ $(async () => {
     try {
         const responseJson = await fetch('Assets/json/data.json');
         const jobs = await responseJson.json();
-        
+        allJobs = jobs;
         let row = '';
 
         jobs.forEach(job => {
 
-            row += `<div id="tab" class="${job.featured ? 'bd-callout' : ''} row my-3 shadow rounded-lg">
+            row += `<div id="tab" class="${job.featured ? 'bd-callout ' : ''} row my-3 shadow rounded-lg filtered">
             <div class="mr-3">
                 <img " class="ml-4 my-4" src="${'Assets/' + job.logo}">
             </div>
-
-            
             
             <div style="margin-top: 26px;">
                     <label class="text-muted  company">${job.company}</label>
@@ -63,10 +61,8 @@ $(async () => {
                 </div>
                 
             </div>`;
-
-            allJobs.add(row);
         });
-
+        
         $('#main').append(row);
 
     } catch (error) {
@@ -92,6 +88,45 @@ function addingToArray(tagAdded){
     if(!filter.has(tagAdded)){
         
         filter.add(tagAdded);
+
+        // debuggertagAdded
+        // const allFilterTabs = document.querySelectorAll('.test');
+
+        // for (let i = 0; i < allFilterTabs.length; i++) {
+        //     console.log(allFilterTabs[i].attributes='data-value')
+        //     if(!allFilterTabs[i].dataset == tagAdded){
+        //         document.querySelectorAll('#tab').addClass='d-none';
+        //     } else {
+        //         document.querySelectorAll('#tab').classRemove='d-none';;
+        //     }
+        // }
+
+        // TESTING
+
+        for (let i = 0; i < allJobs.size; i++) {
+            if (!allJobs[i].role == tagAdded) {
+                document.querySelectorAll('.filtered').forEach(t => {
+                    t.addClass = 'd-none'
+                });
+            }
+            
+        }
+
+        // allJobs.forEach(job => {
+        //     if(!tagAdded == job.role){
+        //         $('.filtered').addClass('d-none');
+        //     }
+        // })
+
+        // allJobs.filter(job => {
+
+
+        //     if(!job.role == tagAdded || !job.level == tagAdded){
+        //         $('.filtered').addClass('d-none');
+        //     }
+        // });
+        
+        // TESTING
         
         $('#filterLang').removeClass('d-none').addClass('d-flex d-block');
         
