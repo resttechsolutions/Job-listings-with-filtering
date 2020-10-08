@@ -1,11 +1,11 @@
 let filter = new Set();
-let allJobs = new Set();
+let jobs = new Set();
 $(async () => {
 
     try {
         const responseJson = await fetch('Assets/json/data.json');
-        const jobs = await responseJson.json();
-        allJobs = jobs;
+        jobs = await responseJson.json();
+
         let row = '';
 
         jobs.forEach(job => {
@@ -89,44 +89,16 @@ function addingToArray(tagAdded){
         
         filter.add(tagAdded);
 
-        // debuggertagAdded
-        // const allFilterTabs = document.querySelectorAll('.test');
-
-        // for (let i = 0; i < allFilterTabs.length; i++) {
-        //     console.log(allFilterTabs[i].attributes='data-value')
-        //     if(!allFilterTabs[i].dataset == tagAdded){
-        //         document.querySelectorAll('#tab').addClass='d-none';
-        //     } else {
-        //         document.querySelectorAll('#tab').classRemove='d-none';;
-        //     }
-        // }
-
         // TESTING
-
-        for (let i = 0; i < allJobs.size; i++) {
-            if (!allJobs[i].role == tagAdded) {
+        debugger
+        for (let i = 0; i < jobs.size; i++) {
+            if (jobs[i].role == tagAdded) {
                 document.querySelectorAll('.filtered').forEach(t => {
-                    t.addClass = 'd-none'
+                    console.log(t)
                 });
             }
             
         }
-
-        // allJobs.forEach(job => {
-        //     if(!tagAdded == job.role){
-        //         $('.filtered').addClass('d-none');
-        //     }
-        // })
-
-        // allJobs.filter(job => {
-
-
-        //     if(!job.role == tagAdded || !job.level == tagAdded){
-        //         $('.filtered').addClass('d-none');
-        //     }
-        // });
-        
-        // TESTING
         
         $('#filterLang').removeClass('d-none').addClass('d-flex d-block');
         
