@@ -16,6 +16,8 @@ $(async () => {
 });
 
 function showJobs(){
+    row = '';
+
     if (filteredJobs.length == 0) {
         jobs.forEach(job => {
 
@@ -76,8 +78,6 @@ function showJobs(){
     
     } else {
 
-        // $('#main').html('');
-
         filteringJobs(filteredJobs);
     }
 }
@@ -89,6 +89,12 @@ function clearBar(){
     $('#btn-tags').html('');
 
     $('#filterLang').removeClass('d-flex d-block').addClass('d-none');
+
+    filteredJobs.length = 0;
+
+    $('#main').html('');
+
+    showJobs();
 }
 
 function addingToArray(tagAdded){
@@ -100,14 +106,10 @@ function addingToArray(tagAdded){
         filter.add(tagAdded);
 
         filteredJobs = jobs.filter(job => job.role.toLowerCase() == tagAdded.toLowerCase() 
-        || job.level.toLowerCase() == tagAdded.toLowerCase());
+        || job.level.toLowerCase() == tagAdded.toLowerCase()
+        || job.languages.includes(tagAdded));
 
-        showJobs();
-
-        filteredJobs.forEach(j => {
-            console.log(j)
-        })
-        
+        showJobs();        
         
         $('#filterLang').removeClass('d-none').addClass('d-flex d-block');
         
@@ -186,6 +188,17 @@ function deletingFilter(tagToDelete){
 
     filter.delete(tagToDelete);
 
+    // debugger
+
+    filter.forEach(f => {
+        filteredJobs = jobs.filter(job => job.role.toLowerCase() == f.toLowerCase() 
+        || job.level.toLowerCase() == f.toLowerCase()
+        // || job.languages.includes(f.languages.)
+        );
+    })
+
+    showJobs();
+
     $('#btn-tags').html('');
 
     filter.forEach(f => {
@@ -194,7 +207,6 @@ function deletingFilter(tagToDelete){
 
     if (filter.size == 0) {
         clearBar();
-
     }
     
 }
