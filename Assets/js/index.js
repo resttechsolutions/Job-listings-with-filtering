@@ -105,32 +105,13 @@ function addingToArray(tagAdded){
         
         filter.push(tagAdded)
 
-        // let filteredTags = [jobs.role, jobs.level, jobs.forEach(job => ...job.languages)]
-        // console.log(filteredTags);
-
-        // console.log( jobs);
-
         filteredJobs = jobs.filter(job =>{
             let arrTags = [job.role, job.level, ...job.languages]
 
-            arrTags.every(f => arrTags.includes(f));
-            // console.log(arrTags)
-            
-            // job.every((arrTags) => arrTags.includes(job.role) || 
-            // arrTags.includes(job.level) || 
-            // arrTags.includes(job.languages))
+            return filter.every(f => arrTags.includes(f));
         } );
 
         console.log(filteredJobs)
-
-
-        // filteredJobs = jobs.every((job,tagAdded) => job.role.toLowerCase() == tagAdded.toLowerCase() 
-        // || job.level.toLowerCase() == tagAdded.toLowerCase()
-        // || job.languages.includes(tagAdded));
-
-        // filteredJobs = jobs.filter(job => job.role.toLowerCase() == tagAdded.toLowerCase() 
-        // || job.level.toLowerCase() == tagAdded.toLowerCase()
-        // || job.languages.includes(tagAdded));
 
         showJobs();        
         
@@ -209,10 +190,8 @@ function filteringJobs(filteredJobs){
 
 function deletingFilter(tagToDelete){
 
-    filter.pop(tagToDelete);
-
-    // 
-// debugger
+    filter.splice(tagToDelete,1);
+    
     filter.forEach(f => {
         filteredJobs = jobs.filter(job => job.role.toLowerCase() == f.toLowerCase() 
         || job.level.toLowerCase() == f.toLowerCase()
