@@ -1,4 +1,4 @@
-let filter = new Set();
+let filter = new Array();
 let jobs = new Set();
 let filteredJobs = new Array();
 let row = '';
@@ -84,7 +84,7 @@ function showJobs(){
 
 function clearBar(){
 
-    filter.clear();
+    filter.length = 0;
 
     $('#btn-tags').html('');
 
@@ -101,13 +101,36 @@ function addingToArray(tagAdded){
 
     $('#btn-tags').html('');
 
-    if(!filter.has(tagAdded)){
+    if(!filter.includes(tagAdded)){
         
-        filter.add(tagAdded);
+        filter.push(tagAdded)
 
-        filteredJobs = jobs.filter(job => job.role.toLowerCase() == tagAdded.toLowerCase() 
-        || job.level.toLowerCase() == tagAdded.toLowerCase()
-        || job.languages.includes(tagAdded));
+        // let filteredTags = [jobs.role, jobs.level, jobs.forEach(job => ...job.languages)]
+        // console.log(filteredTags);
+
+        // console.log( jobs);
+
+        filteredJobs = jobs.filter(job =>{
+            let arrTags = [job.role, job.level, ...job.languages]
+
+            arrTags.every(f => arrTags.includes(f));
+            // console.log(arrTags)
+            
+            // job.every((arrTags) => arrTags.includes(job.role) || 
+            // arrTags.includes(job.level) || 
+            // arrTags.includes(job.languages))
+        } );
+
+        console.log(filteredJobs)
+
+
+        // filteredJobs = jobs.every((job,tagAdded) => job.role.toLowerCase() == tagAdded.toLowerCase() 
+        // || job.level.toLowerCase() == tagAdded.toLowerCase()
+        // || job.languages.includes(tagAdded));
+
+        // filteredJobs = jobs.filter(job => job.role.toLowerCase() == tagAdded.toLowerCase() 
+        // || job.level.toLowerCase() == tagAdded.toLowerCase()
+        // || job.languages.includes(tagAdded));
 
         showJobs();        
         
@@ -186,14 +209,14 @@ function filteringJobs(filteredJobs){
 
 function deletingFilter(tagToDelete){
 
-    filter.delete(tagToDelete);
+    filter.pop(tagToDelete);
 
-    // debugger
-
+    // 
+// debugger
     filter.forEach(f => {
         filteredJobs = jobs.filter(job => job.role.toLowerCase() == f.toLowerCase() 
         || job.level.toLowerCase() == f.toLowerCase()
-        // || job.languages.includes(f.languages.)
+        || job.languages.includes(f)
         );
     })
 
@@ -205,7 +228,8 @@ function deletingFilter(tagToDelete){
         $('#btn-tags').append(`<button onclick="deletingFilter('${f}')" class="tag clear mx-1 btn btn-xs text-muted mr-auto">${f}</button>`);
     });
 
-    if (filter.size == 0) {
+    //
+    if (filter.length == 0) {
         clearBar();
     }
     
