@@ -3,49 +3,68 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+      shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous">
 
     <!-- MY CSS -->
     <link rel="stylesheet" href="Assets/css/index.css">
 
     <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap"
+      rel="stylesheet">
     <title>Frontend Mentor | Job listing with filtering coding chanllenge</title>
   </head>
   <body>
 
     <!-- start main bg img -->
     <div id="bgImg">
-        <img class="img-fluid" src="Assets/images/bg-header-desktop.svg" width="100%" alt="">
+      <img class="img-fluid" src="Assets/images/bg-header-desktop.svg"
+        width="100%" alt="">
     </div>
     <!-- end main bg img -->
 
     <!-- start filtering bar -->
-    <div id="filterLang" class="container d-none py-3 bg-white shadow" style="margin-top: -30px; position: relative;">
-      <div id="btn-tags" class="d-inline"></div>
-      <div id="btn-clear" class="col-1 d-inline ml-auto">
-        <button id="btn-clear" class="btn clear text-muted"
-        onclick="clearBar()">Clear</button>
+    <div class="container">
+      <div id="filterLang"
+        class="row d-none py-3 bg-white shadow mt-n3 position-relative
+        mx-auto">
+        <div id="btn-tags" class="col-10 d-inline"></div>
+        <div id="btn-clear" class="col-2 d-inline">
+          <button id="btn-clear" class="btn clear text-muted"
+            onclick="clearBar()">Clear</button>
+        </div>
       </div>
     </div>
     <!-- end filtering bar -->
 
     <!-- start main div -->
-    <div id="main" class="container mb-5 mt-5   rounded-lg">
-      
+    <div id="main" class="container mb-5 mt-5 rounded-lg">
+
     </div>
     <!-- end main div -->
 
-    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"></script>
+
     <!-- <script src="Assets/json/data.json"></script> -->
     <script src="Assets/js/index.js"></script>
   </body>

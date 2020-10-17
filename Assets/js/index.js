@@ -21,24 +21,27 @@ function showJobs(){
     if (filteredJobs.length == 0) {
         jobs.forEach(job => {
 
-            row += `<div id="tab" class="${job.featured ? 'bd-callout ' : ''} row my-3 shadow rounded-lg filtered">
-            <div class="mr-3">
-                <img " class="ml-4 my-4" src="${'Assets/' + job.logo}">
-            </div>
+            row += 
+            `<div id="tab" class="row ${job.featured ? `bd-callout `: ``} mx-auto my-5  my-md-3 shadow rounded-lg filtered">
+                <div class="w-25 h-25 col- col-sm-2 col-md-2">
+                    <img " class="img-fluid ml-sm-1  ml-md-4 my-md-4 mt-n4 pb-2" src="${'Assets/' + job.logo}">
+                </div>
             
-            <div style="margin-top: 26px;">
-                    <label class="text-muted  company">${job.company}</label>
-                    ${job.new ? `<label class="rounded-pill text-white lbl-new">NEW!</label>`:``}
-                    ${job.featured ? `<label class="rounded-pill text-white lbl-featured">FEATURED</label>` : ``}
-                    <p class="font-weight-bold title mb-0">${job.position}</p>
-                    <label class="text-muted company">
-                        ${job.postedAt} <span class="mx-2">.</span> 
-                        ${job.contract} <span class="mx-2">.</span>
-                        ${job.location}
-                    </label>
-            </div>
-            
-            <div class="d-inline my-auto ml-auto mr-5" id="filters">
+                <div class="col- col-md-4 w-100 ml-2 ml-md-3 mt-1 mt-md-4" >
+                        <label class="text-muted  company">${job.company}</label>
+                        ${job.new ? `<label class="rounded-pill text-white lbl-new">NEW!</label>`:``}
+                        ${job.featured ? `<label class="rounded-pill text-white lbl-featured">FEATURED</label>` : ``}
+                        <p class="font-weight-bold title mb-0">${job.position}</p>
+                        <label class="text-muted company">
+                            ${job.postedAt} <span class="mx-2">.</span> 
+                            ${job.contract} <span class="mx-2">.</span>
+                            ${job.location}
+                        </label>
+                </div>
+
+                <hr class="col-10 d-block d-md-none w-100 "></hr>
+
+                <div class="col-sm-10 col-md-4 d-md-inline   my-auto ml-md-auto mr-md-5 mr-auto pb-3" id="filters">
                     
                     <button id="btn-role" 
                     data-value="${job.role}" 
@@ -47,7 +50,6 @@ function showJobs(){
                     onclick="addingToArray('${job.role}')">
                         ${job.role}
                     </button>
-
                     <button id="btn-level" 
                     data-value="${job.level}" 
                     type="button" 
@@ -55,7 +57,6 @@ function showJobs(){
                     onclick="addingToArray('${job.level}')">
                         ${job.level}
                     </button>
-
                     ${
                         job.languages.map( lang => {
                             return `<button 
@@ -64,13 +65,11 @@ function showJobs(){
                             type="button" 
                             class="mx-1 btn btn-xs text-muted test"
                             onclick="addingToArray('${lang}')">
-                                 ${lang} 
+                                ${lang} 
                             </button>`
                         }).join('')
                     }
-                    
                 </div>
-                
             </div>`;
         });
         
@@ -131,12 +130,13 @@ function filteringJobs(filteredJobs){
 
     filteredJobs.forEach(job => {
 
-        row += `<div id="tab" class="${job.featured ? 'bd-callout ' : ''} row my-3 shadow rounded-lg filtered">
-        <div class="mr-3">
-            <img " class="ml-4 my-4" src="${'Assets/' + job.logo}">
+        row += 
+        `<div id="tab" class="row ${job.featured ? `bd-callout `: ``} mx-auto my-5  my-md-3 shadow rounded-lg filtered">
+        <div class="w-25 h-25 col- col-sm-2 col-md-2">
+            <img " class="img-fluid ml-sm-1  ml-md-4 my-md-4 mt-n4 pb-2" src="${'Assets/' + job.logo}">
         </div>
-        
-        <div style="margin-top: 26px;">
+    
+        <div class="col- col-md-4 w-100 ml-2 ml-md-3 mt-1 mt-md-4" >
                 <label class="text-muted  company">${job.company}</label>
                 ${job.new ? `<label class="rounded-pill text-white lbl-new">NEW!</label>`:``}
                 ${job.featured ? `<label class="rounded-pill text-white lbl-featured">FEATURED</label>` : ``}
@@ -147,8 +147,10 @@ function filteringJobs(filteredJobs){
                     ${job.location}
                 </label>
         </div>
-        
-        <div class="d-inline my-auto ml-auto mr-5" id="filters">
+
+        <hr class="col-10 d-block d-md-none w-100 "></hr>
+
+        <div class="col-sm-10 col-md-4 d-md-inline   my-auto ml-md-auto mr-md-5 mr-auto pb-3" id="filters">
                 
                 <button id="btn-role" 
                 data-value="${job.role}" 
